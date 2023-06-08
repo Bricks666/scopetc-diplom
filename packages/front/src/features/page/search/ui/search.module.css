@@ -1,0 +1,26 @@
+.field {
+	color: #7b7b7b;
+
+	background-color: #122840;
+
+	border-radius: 10px;
+}
+
+.field input::placeholder {
+	font-size: 16px;
+	color: currentColor;
+}
+
+.field input {
+	color: #7b7b7b;
+
+	border-radius: inherit;
+}
+
+.field input + fieldset {
+	border: none;
+}
+
+.icon {
+	color: #7b7b7b;
+}

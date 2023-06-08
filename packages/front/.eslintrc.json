@@ -1,0 +1,50 @@
+{
+	"env": {
+		"browser": true
+	},
+	"extends": [
+		"plugin:effector/recommended",
+		"plugin:effector/react",
+		"plugin:effector/scope",
+		"airbnb",
+		"@feature-sliced",
+		"../../.eslintrc.json"
+	],
+	"parserOptions": {
+		"ecmaFeatures": {
+			"jsx": true
+		}
+	},
+	"plugins": ["react", "effector"],
+	"rules": {
+		/* STANDARD */
+		"jsx-quotes": ["error", "prefer-single"],
+
+		/* REACT */
+		"react/jsx-filename-extension": [1, { "extensions": [".tsx", ".ts"] }],
+		"react/jsx-props-no-spreading": "off",
+		"react/prop-types": "off",
+		"react/require-default-props": "off",
+		"react/jsx-indent": ["error", "tab"],
+		"react/jsx-indent-props": ["error", "tab"],
+		"react/function-component-definition": "off",
+		"react/no-unused-prop-types": "off",
+		"react/no-array-index-key": "off",
+
+		/* IMPORT */
+		"import/extensions": [
+			"error",
+			"never",
+			{
+				"svg": "always",
+				"webp": "always",
+				"png": "always",
+				"jpeg": "always",
+				"jpg": "always",
+				"avif": "always",
+				"css": "always"
+			}
+		]
+	},
+	"ignorePatterns": ["*.css.d.ts"]
+}

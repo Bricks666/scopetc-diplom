@@ -1,0 +1,50 @@
+version: '3'
+services:
+   db:
+    image: postgres:alpine
+    env_file:
+      - .env
+    restart: always
+    ports:
+      - ${DB_PORT}:5432
+    volumes:
+      - db-data:/var/lib/postgresql/data
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USER}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+    container_name: db
+   api:
+    build: ./packages/back
+    env_file:
+      - .env
+    ports:
+      - ${SERVER_PORT}:${SERVER_PORT}
+    volumes:
+      - static:/app/static
+    environment:
+      PORT: ${SERVER_PORT}
+      DATABASE_URL: 'postgresql://root:Root123@db:5432/KION'
+      SECRET: ${SERVER_SECRET}
+      FFMPEG: ${SERVER_FFMPEG}
+    depends_on:
+      - db
+    restart:
+      on-failure
+    container_name: api
+   client:
+    build: ./packages/front
+    env_file:
+      - .env
+    environment:
+      VITE_API_URL: http://api:${SERVER_PORT}/api
+    ports:
+      - ${CLIENT_PORT}:80
+    depends_on:
+      - api
+    restart:
+      on-failure
+    container_name: client
+volumes:
+  db-data:
+  static:

@@ -1,0 +1,8 @@
+.promo {
+	margin-bottom: 40px;
+}
+
+.groups {
+	display: grid;
+	gap: 120px;
+}

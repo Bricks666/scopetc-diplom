@@ -1,0 +1,32 @@
+.wrapper {
+	position: relative;
+
+	width: 90%;
+
+	margin: 0 auto;
+}
+
+.button {
+	position: absolute;
+	top: 50%;
+
+	color: white;
+	transform: translateY(-50%);
+}
+
+.icon {
+	width: 2em;
+	height: 2em;
+}
+
+.button__prev {
+	left: 0;
+
+	transform: translateY(-50%) translateX(-100%);
+}
+
+.button__next {
+	right: 0;
+
+	transform: translateY(-50%) translateX(100%);
+}

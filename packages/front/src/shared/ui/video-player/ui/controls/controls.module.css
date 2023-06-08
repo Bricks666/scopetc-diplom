@@ -1,0 +1,24 @@
+.container {
+	display: flex;
+	justify-content: space-between;
+}
+
+.button {
+	color: white;
+}
+
+.groups {
+	display: flex;
+	gap: 10px;
+	align-items: center;
+}
+
+.icon {
+	font-size: 2rem;
+}
+
+.slider {
+	width: 200px;
+
+	color: white;
+}

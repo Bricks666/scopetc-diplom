@@ -1,0 +1,27 @@
+.modal {
+	display: grid;
+	gap: 1em;
+    padding-bottom: 1rem;
+	background-color: rgba(0, 0, 0, 0.904);
+}
+
+.icon-buttons{
+    display: flex;
+    gap: 1rem;
+}
+
+
+.add-icon{
+    width: 25px;
+    height: 25px;
+}
+
+.button{
+    color: white;
+}
+
+.buttons{
+    display: flex;
+    justify-content: space-between;
+    padding: 2rem 1rem 0;
+}

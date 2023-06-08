@@ -1,0 +1,54 @@
+.slide {
+	height: 408px;
+
+	border-radius: 10px;
+
+	overflow: hidden;
+}
+
+.link {
+	position: relative;
+
+	display: grid;
+
+	width: 100%;
+	height: 100%;
+
+	color: inherit;
+	text-decoration: none;
+}
+
+.preview {
+	position: absolute;
+	inset: 0;
+	z-index: -1;
+
+	width: 100%;
+	height: 100%;
+}
+
+.textWrapper {
+	align-self: end;
+
+	display: grid;
+	align-items: end;
+	gap: 15px;
+
+	padding: 35px 215px;
+	padding-right: 190px;
+}
+
+.title {
+	max-width: 150px;
+}
+
+.description {
+}
+
+.info {
+	display: flex;
+}
+
+.age {
+	margin-left: auto;
+}

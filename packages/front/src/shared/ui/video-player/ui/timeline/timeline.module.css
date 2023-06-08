@@ -1,0 +1,39 @@
+.timeControls {
+	display: flex;
+	width: 100%;
+	align-items: center;
+}
+
+.timeBar {
+	width: 100%;
+	height: 2px;
+	background-color: #2a2d32;
+	margin-right: 0.5rem;
+}
+
+.timeBar_progress {
+	height: 100%;
+	background-color: white;
+}
+
+.time {
+	font-size: 14px;
+}
+
+.progressTime {
+	color: white;
+}
+
+.allTime {
+	color: #959595;
+}
+
+.connect{
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.inner-seek-block .connect{
+	background-color: white;
+}
