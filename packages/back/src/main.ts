@@ -1,5 +1,3 @@
-import * as fs from 'node:fs/promises';
-import * as path from 'node:path';
 import { ValidationPipe } from '@nestjs/common';
 import * as validatorPackage from 'class-validator';
 import * as transformerPackage from 'class-transformer';
@@ -9,18 +7,10 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import * as cookieParser from 'cookie-parser';
 import { AppModule } from '@/app.module';
 import { DatabaseService } from '@/database';
-import { STATIC_DIR_PATH } from './const';
 
 async function bootstrap() {
-	const { PORT, } = process.env;
+	const { PORT } = process.env;
 	const app = await NestFactory.create<NestExpressApplication>(AppModule);
-
-	const directories = [
-		fs.mkdir(path.join(STATIC_DIR_PATH, 'images'), { recursive: true, }),
-		fs.mkdir(path.join(STATIC_DIR_PATH, 'manifests'), { recursive: true, }),
-		fs.mkdir(path.join(STATIC_DIR_PATH, 'videos'), { recursive: true, })
-	];
-	await Promise.all(directories);
 
 	const prismaService = app.get(DatabaseService);
 	await prismaService.enableShutdownHooks(app);

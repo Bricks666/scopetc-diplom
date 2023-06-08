@@ -1,2 +1,3 @@
 export * from './film.dot';
-export * from './create-film.dto';
+export * from './country.dto';
+export * from './genre.dto';

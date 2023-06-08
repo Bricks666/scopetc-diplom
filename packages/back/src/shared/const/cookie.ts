@@ -8,4 +8,4 @@ export const BASE_COOKIE_OPTIONS: CookieOptions = {
 
 export const COOKIE_TIME: number = 30 * 24 * 60 * 60 * 1000;
 
-export const COOKIE_NAME = process.env.COOKIE_NAME || 'KION';
+export const COOKIE_NAME = process.env.COOKIE_NAME || 'FILMS';
