@@ -8,7 +8,7 @@ import { JwtService } from '@nestjs/jwt';
 import { Request } from 'express';
 import { Reflector } from '@nestjs/core';
 import { SecurityUserDto } from '@/users';
-import { extractAccessToken } from '@/shared';
+import { extractAccessToken } from '@/shared/lib';
 import { DISABLE_AUTH_CHECK_FLAG } from './config';
 
 @Injectable()

@@ -16,9 +16,9 @@ import {
 	ApiOperation,
 	ApiTags
 } from '@nestjs/swagger';
-import { BASE_COOKIE_OPTIONS, COOKIE_NAME, COOKIE_TIME } from '@/const';
+import { BASE_COOKIE_OPTIONS, COOKIE_NAME, COOKIE_TIME } from '@/shared/const';
 import { CreateUserDto, SecurityUserDto } from '@/users';
-import { Cookie } from '@/shared';
+import { Cookie } from '@/shared/lib';
 import { AuthService } from '../services';
 import {
 	AuthenticationResultDto,

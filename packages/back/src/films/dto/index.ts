@@ -1,2 +1,2 @@
 export * from './film.dot';
-export * from './create-film.dto';
+export * from './search.dto';
