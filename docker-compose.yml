@@ -26,7 +26,6 @@ services:
       PORT: ${SERVER_PORT}
       DATABASE_URL: 'postgresql://root:Root123@db:5432/KION'
       SECRET: ${SERVER_SECRET}
-      FFMPEG: ${SERVER_FFMPEG}
     depends_on:
       - db
     restart:

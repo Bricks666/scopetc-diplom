@@ -1,7 +1,7 @@
 FROM node:lts-alpine as builder
 WORKDIR /app
-COPY package*.json /app/
 RUN apk --no-cache add --virtual builds-deps build-base python3
+COPY package*.json /app/
 RUN npm ci --ignore-scripts
 COPY ./prisma /app/prisma
 RUN npx prisma generate
@@ -11,7 +11,6 @@ RUN npm run build
 FROM node:lts-alpine
 WORKDIR /app
 COPY --from=builder /app/package*.json ./
-RUN apk add  --no-cache ffmpeg
 RUN npm ci prisma --omit=dev --ignore-scripts
 RUN npm ci --omit=dev --ignore-scripts
 RUN npm rebuild
