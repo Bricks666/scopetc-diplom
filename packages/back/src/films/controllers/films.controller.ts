@@ -1,6 +1,7 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Query } from '@nestjs/common';
 import { DisableAuthCheck } from '@/auth';
 import { FilmsService } from '../services/films.service';
+import { SearchDto } from '../dto';
 
 @Controller('films')
 export class FilmsController {
@@ -8,13 +9,13 @@ export class FilmsController {
 
 	@DisableAuthCheck()
 	@Get('/')
-	getAll() {
-		return this.filmsService.getAll();
+	getAll(@Query() search: SearchDto) {
+		return this.filmsService.getAll(search);
 	}
 
 	@DisableAuthCheck()
 	@Get('/recommendations')
-	getRandom() {
-		return this.filmsService.getAll();
+	getRandom(@Query() search: SearchDto) {
+		return this.filmsService.getAll(search);
 	}
 }

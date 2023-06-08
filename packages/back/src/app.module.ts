@@ -11,7 +11,7 @@ import { PresetsModule } from './presets';
 	imports: [
 		ConfigModule.forRoot({
 			isGlobal: true,
-			envFilePath: ['.env', '.env.local'],
+			envFilePath: ['./.env', '.env.local'],
 		}),
 		DatabaseModule.forRoot({
 			isGlobal: true,

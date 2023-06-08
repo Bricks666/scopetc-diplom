@@ -3,7 +3,7 @@ services:
    db:
     image: postgres:alpine
     env_file:
-      - .env.local
+      - .env
     restart: always
     ports:
       - ${DB_PORT}:5432
@@ -17,7 +17,7 @@ services:
    api:
     build: .
     env_file:
-      - .env.local
+      - .env
     ports:
       - ${SERVER_PORT}:${SERVER_PORT}
     environment:
