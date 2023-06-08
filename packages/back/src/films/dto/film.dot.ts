@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { ExtractValueType } from '@/shared/types';
-import { CountryDto } from './country.dto';
-import { GenreDto } from './genre.dto';
+import { FilmCountryDto } from './country.dto';
+import { FilmGenreDto } from './genre.dto';
 
 export const PRODUCTION_STATUS = {
 	FILMING: 'FILMING',
@@ -136,10 +136,10 @@ export class FilmDto {
 	declare lastSync: string;
 
 	@ApiProperty()
-	declare countries: CountryDto[];
+	declare countries: FilmCountryDto[];
 
 	@ApiProperty()
-	declare genres: GenreDto[];
+	declare genres: FilmGenreDto[];
 
 	@ApiProperty()
 	declare startYear: number | null;

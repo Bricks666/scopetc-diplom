@@ -5,7 +5,7 @@ import { DatabaseModule } from './database';
 import { AuthGuard, AuthModule } from './auth';
 import { UsersModule } from './users';
 import { FilmsModule } from './films';
-import { PresetsModule } from './presets';
+import { FiltersModule } from './filters';
 
 @Module({
 	imports: [
@@ -19,7 +19,7 @@ import { PresetsModule } from './presets';
 		AuthModule,
 		UsersModule,
 		FilmsModule,
-		PresetsModule,
+		FiltersModule,
 	],
 	controllers: [],
 	providers: [
