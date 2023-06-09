@@ -1,35 +1,17 @@
-import { CircularProgress } from '@mui/material';
 import { createRoutesView } from 'atomic-router-react';
 import * as React from 'react';
-import { routes } from '@/shared/config';
+import { PageLoader } from '@/shared/ui';
 import { FilmPage } from './film';
+import { HomePage } from './home';
 import { LoginPage } from './login';
 
-import styles from './index.module.css';
-
-const HomePage = React.lazy(() => import('./home'));
-
 const View = createRoutesView({
-	routes: [
-		LoginPage,
-		{
-			route: routes.home,
-			view: HomePage,
-		},
-		FilmPage,
-	],
+	routes: [LoginPage, HomePage, FilmPage],
 });
 
 export const Pages: React.FC = () => {
 	return (
-		<React.Suspense
-			fallback={
-				<CircularProgress
-					size={80}
-					color='secondary'
-					className={styles.circle}
-				/>
-			}>
+		<React.Suspense fallback={<PageLoader />}>
 			<View />
 		</React.Suspense>
 	);

@@ -9,9 +9,8 @@ import {
 	sample,
 } from 'effector';
 import { authApi } from '../api';
-import { debug } from 'patronum';
 
-const authUser = createDomain();
+const session = createDomain();
 
 enum AuthorizationStatus {
 	Initial = 1,
@@ -20,8 +19,8 @@ enum AuthorizationStatus {
 	Authorized,
 }
 
-export const $user = authUser.store<{ id: number } | null>(null);
-const $authorizationStatus = authUser.store<AuthorizationStatus>(
+export const $user = session.store<{ id: number } | null>(null);
+const $authorizationStatus = session.store<AuthorizationStatus>(
 	AuthorizationStatus.Initial
 );
 export const $isAuth = $authorizationStatus.map(
@@ -65,57 +64,59 @@ export const chainAuthorized = <Params extends RouteParams>(
 ) => {
 	const { route, otherwise } = options;
 
-	const checkAuthorization = createEvent<any>();
+	const sessionCheckStarted = createEvent<any>();
 	const alreadyAuthorized = createEvent();
 	const alreadyAnonymous = createEvent();
 
-	const authorizationSuccess = createEvent();
-	const authorizationFailure = createEvent();
+	const sessionReceivedAuthorized = createEvent();
+	const sessionReceivedAnonymous = createEvent();
 
 	sample({
-		clock: checkAuthorization,
+		clock: sessionCheckStarted,
 		filter: $isAuth,
 		target: alreadyAuthorized,
 	});
 
 	sample({
-		clock: checkAuthorization,
+		clock: sessionCheckStarted,
 		source: $authorizationStatus,
 		filter: (status) => status === AuthorizationStatus.Anonymous,
 		target: alreadyAnonymous,
 	});
 
 	sample({
-		clock: checkAuthorization,
+		clock: sessionCheckStarted,
 		source: $authorizationStatus,
-		filter: (status) => status === AuthorizationStatus.Anonymous,
+		filter: (status) => status === AuthorizationStatus.Initial,
 		target: auth.start,
 	});
 
 	sample({
 		clock: [alreadyAuthorized, auth.finished.success],
-		fn: () => undefined,
-		target: authorizationSuccess,
+		filter: route.$isOpened,
+		fn: () => null,
+		target: sessionReceivedAuthorized,
 	});
 
 	sample({
 		clock: [alreadyAnonymous, auth.finished.failure],
-		fn: () => undefined,
-		target: authorizationFailure,
+		filter: route.$isOpened,
+		fn: () => null,
+		target: sessionReceivedAnonymous,
 	});
 
 	if (otherwise) {
 		sample({
-			clock: authorizationFailure,
+			clock: sessionReceivedAnonymous,
 			target: otherwise as Event<any>,
 		});
 	}
 
 	return chainRoute({
 		route,
-		beforeOpen: checkAuthorization,
-		openOn: authorizationSuccess,
-		cancelOn: authorizationFailure,
+		beforeOpen: sessionCheckStarted,
+		openOn: sessionReceivedAuthorized,
+		cancelOn: sessionReceivedAnonymous,
 	});
 };
 
@@ -124,56 +125,58 @@ export const chainAnonymous = <Params extends RouteParams>(
 ) => {
 	const { route, otherwise } = options;
 
-	const checkAuthorization = createEvent<any>();
+	const sessionCheckStarted = createEvent<any>();
 	const alreadyAuthorized = createEvent();
 	const alreadyAnonymous = createEvent();
 
-	const authorizationSuccess = createEvent();
-	const authorizationFailure = createEvent();
+	const sessionReceivedAuthorized = createEvent();
+	const sessionReceivedAnonymous = createEvent();
 
 	sample({
-		clock: checkAuthorization,
+		clock: sessionCheckStarted,
 		filter: $isAuth,
 		target: alreadyAuthorized,
 	});
 
 	sample({
-		clock: checkAuthorization,
+		clock: sessionCheckStarted,
 		source: $authorizationStatus,
 		filter: (status) => status === AuthorizationStatus.Anonymous,
 		target: alreadyAnonymous,
 	});
 
 	sample({
-		clock: checkAuthorization,
+		clock: sessionCheckStarted,
 		source: $authorizationStatus,
-		filter: (status) => status === AuthorizationStatus.Anonymous,
+		filter: (status) => status === AuthorizationStatus.Initial,
 		target: auth.start,
 	});
 
 	sample({
 		clock: [alreadyAuthorized, auth.finished.success],
-		fn: () => undefined,
-		target: authorizationSuccess,
+		filter: route.$isOpened,
+		fn: () => null,
+		target: sessionReceivedAuthorized,
 	});
 
 	sample({
 		clock: [alreadyAnonymous, auth.finished.failure],
-		fn: () => undefined,
-		target: authorizationFailure,
+		filter: route.$isOpened,
+		fn: () => null,
+		target: sessionReceivedAnonymous,
 	});
 
 	if (otherwise) {
 		sample({
-			clock: authorizationFailure,
+			clock: sessionReceivedAuthorized,
 			target: otherwise as Event<any>,
 		});
 	}
 
 	return chainRoute({
 		route,
-		beforeOpen: checkAuthorization,
-		cancelOn: authorizationSuccess,
-		openOn: authorizationFailure,
+		beforeOpen: sessionCheckStarted,
+		cancelOn: sessionReceivedAuthorized,
+		openOn: sessionReceivedAnonymous,
 	});
 };

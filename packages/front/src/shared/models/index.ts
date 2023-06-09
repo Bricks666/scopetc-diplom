@@ -1,1 +1,1 @@
-export * as authUserModel from './auth-user';
+export * as sessionModel from './session';

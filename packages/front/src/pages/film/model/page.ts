@@ -1,6 +1,6 @@
 import { routes } from '@/shared/config';
 import { createPageLoadModel } from '@/shared/lib';
-import { authUserModel } from '@/shared/models';
+import { sessionModel } from '@/shared/models';
 
 export const {
 	currentRoute,
@@ -10,7 +10,7 @@ export const {
 	unmounted,
 } = createPageLoadModel(routes.film);
 
-export const authorizedRoute = authUserModel.chainAuthorized({
+export const authorizedRoute = sessionModel.chainAuthorized({
 	route: currentRoute,
 	otherwise: routes.login.open,
 });
