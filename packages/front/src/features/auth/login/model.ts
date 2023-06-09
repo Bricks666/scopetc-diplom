@@ -1,8 +1,8 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { authUserModel } from '@/entities/auth-user';
 import { authApi, LoginParams } from '@/shared/api';
+import { authUserModel } from '@/shared/models';
 
 const login = createDomain();
 

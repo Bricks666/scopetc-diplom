@@ -1,7 +1,7 @@
 import { sample } from 'effector';
 import { not } from 'patronum';
-import { authUserModel } from '@/entities/auth-user';
 import { routes } from '@/shared/config';
+import { authUserModel } from '@/shared/models';
 import { currentRoute, loadedWithRouteState } from './page';
 
 sample({
