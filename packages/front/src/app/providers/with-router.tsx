@@ -11,13 +11,17 @@ const router = createHistoryRouter({
 			route: routes.login,
 		},
 		{
+			path: '/registration',
+			route: routes.registration,
+		},
+		{
 			path: '/',
 			route: routes.home,
 		},
 		{
 			path: '/film/:id',
 			route: routes.film,
-		}
+		},
 	],
 	controls,
 });
@@ -31,10 +35,10 @@ router.setHistory(createBrowserHistory());
 
 export const withRouter =
 	(Component: React.ComponentType): React.ComponentType =>
-		() => {
-			return (
-				<RouterProvider router={router}>
-					<Component />
-				</RouterProvider>
-			);
-		};
+	() => {
+		return (
+			<RouterProvider router={router}>
+				<Component />
+			</RouterProvider>
+		);
+	};

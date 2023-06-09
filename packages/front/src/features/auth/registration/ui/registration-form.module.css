@@ -1,0 +1,53 @@
+.form {
+	display: grid;
+	gap: 20px;
+}
+
+.field {
+	color: #7b7b7b;
+}
+
+.field input::placeholder {
+	color: currentColor;
+}
+
+.field input {
+	color: #7b7b7b;
+
+	background-color: #d9d9d9;
+
+	border-radius: inherit;
+}
+
+.field input:focus-visible {
+	background-color: #ffffff;
+}
+
+.field input + fieldset {
+	border-width: 2px;
+	border-color: transparent;
+}
+.field input:hover + fieldset {
+	border-color: transparent !important;
+}
+
+.field input:focus-visible + fieldset {
+	border-color: var(--secondary-color-100) !important;
+}
+
+.button {
+	margin-top: 30px;
+
+	font-weight: 700;
+	text-transform: none;
+	font-size: 28px;
+	color: white;
+
+	background-color: var(--secondary-color-100);
+
+	transition: background-color ease-in-out 250ms;
+}
+
+.button:hover {
+	background-color: var(--secondary-color-90);
+}

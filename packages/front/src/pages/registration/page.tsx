@@ -1,7 +1,7 @@
 import { Paper, Typography } from '@mui/material';
 import { Link } from 'atomic-router-react';
 import * as React from 'react';
-import { LoginForm } from '@/features/auth';
+import { RegistrationForm } from '@/features/auth';
 import { LogoIcon, MainLayout } from '@/shared/ui';
 import './model';
 
@@ -15,17 +15,17 @@ const Login: React.FC = () => {
 				<div className={styles.top}>
 					<LogoIcon className={styles.logo} />
 					<Typography className={styles.title} variant='h5' component='p'>
-						Авторизация
+						Регистрация
 					</Typography>
 				</div>
-				<LoginForm />
+				<RegistrationForm />
 				<Typography className={styles.bottom} variant='h5' component='p'>
-					Нет аккаунта KION?
+					Есть аккаунт?
 					<Typography
 						className={styles.link}
-						to={routes.registration}
+						to={routes.login}
 						component={Link}>
-						Зарегистрироваться
+						Войти
 					</Typography>
 				</Typography>
 			</Paper>

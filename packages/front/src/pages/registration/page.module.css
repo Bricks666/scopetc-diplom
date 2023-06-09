@@ -1,0 +1,46 @@
+.layout {
+	display: flex;
+	justify-content: center;
+}
+
+.wrapper {
+	display: grid;
+	gap: 50px;
+
+	max-width: 580px;
+
+	padding: 64px 100px;
+
+	background-color: var(--primary-color-90);
+}
+
+.top {
+	display: flex;
+	align-items: center;
+	gap: 20px;
+}
+
+.logo {
+	width: 180px;
+	height: auto;
+
+	color: white;
+}
+
+.title {
+	font-weight: 700;
+}
+
+.bottom {
+	display: grid;
+	justify-items: center;
+	gap: 7px;
+}
+
+.link {
+	transition: color ease-in-out 250ms;
+}
+
+.link:hover {
+	color: var(--secondary-color-100);
+}
