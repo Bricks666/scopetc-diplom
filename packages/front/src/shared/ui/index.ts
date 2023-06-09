@@ -4,3 +4,4 @@ export * from './field';
 export * from './video-player';
 export * from './checkbox';
 export * from './slider';
+export * from './page-loader';

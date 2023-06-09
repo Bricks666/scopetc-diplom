@@ -3,7 +3,7 @@ import { AuthResponse, LoginParams, RegistrationParams } from './types';
 
 const baseURL = 'auth';
 
-export const auth = () => {
+export const auth = (): Promise<AuthResponse> => {
 	return instance.get(baseURL).json();
 };
 

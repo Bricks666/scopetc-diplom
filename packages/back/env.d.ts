@@ -9,7 +9,6 @@ declare namespace NodeJS {
 		readonly API_KEY: string;
 		readonly DATABASE_URL: string;
 		readonly PORT: string;
-		readonly FFMPEG: string;
 		readonly SECRET: string;
 	}
 }

@@ -10,12 +10,6 @@ export default defineConfig({
 		port: 3000,
 		cors: true,
 		hmr: true,
-		proxy: {
-			'/static': {
-				target: 'http://localhost:5000',
-				changeOrigin: true,
-			},
-		},
 	},
 	resolve: {
 		alias: {

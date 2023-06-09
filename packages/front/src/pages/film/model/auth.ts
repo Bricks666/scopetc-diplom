@@ -1,11 +1,11 @@
 import { sample } from 'effector';
 import { not } from 'patronum';
-import { authUserModel } from '@/entities/auth-user';
 import { routes } from '@/shared/config';
+import { sessionModel } from '@/shared/models';
 import { currentRoute, loadedWithRouteState } from './page';
 
 sample({
 	clock: [currentRoute.opened, loadedWithRouteState],
-	filter: not(authUserModel.$isAuth),
+	filter: not(sessionModel.$isAuth),
 	target: routes.login.open,
 });

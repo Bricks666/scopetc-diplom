@@ -1,7 +1,7 @@
 import { cache, createQuery } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { filmsApi } from '@/shared/api';
-import { currentRoute, loadedWithRouteState } from './page';
+import { authorizedRoute } from './page';
 
 const film = createDomain();
 
@@ -14,7 +14,7 @@ export const query = createQuery({
 cache(query);
 
 sample({
-	clock: [currentRoute.opened, loadedWithRouteState],
-	fn: ({ params, }) => params,
+	clock: authorizedRoute.opened,
+	fn: ({ params }) => params,
 	target: query.start,
 });

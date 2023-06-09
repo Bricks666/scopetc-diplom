@@ -18,7 +18,7 @@ export interface Tokens {
 	readonly refreshToken: string;
 }
 
-export interface AuthResponse extends AuthUser {
+export interface AuthResponse {
 	readonly user: AuthUser;
 	readonly tokens: Tokens;
 }

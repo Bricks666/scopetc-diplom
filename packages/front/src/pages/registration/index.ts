@@ -1,16 +1,15 @@
-import { RouteInstance } from 'atomic-router';
 import { createRouteView } from 'atomic-router-react';
 import * as React from 'react';
-import { pageModel } from './model';
 import { PageLoader } from '@/shared/ui';
+import { pageModel } from './model';
 
 const Page = React.lazy(() => import('./page'));
 
-export const FilmPage = {
+export const RegistrationPage = {
 	route: pageModel.currentRoute,
 	view: createRouteView({
+		route: pageModel.anonymousRoute,
 		view: Page as React.ComponentType<any>,
-		route: pageModel.authorizedRoute as RouteInstance<any>,
 		otherwise: PageLoader as React.ComponentType<any>,
 	}),
 };

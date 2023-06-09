@@ -7,11 +7,11 @@ import { CommonProps } from '@/shared/types';
 import { Field } from '@/shared/ui';
 import { form } from '../model';
 
-import styles from './login-form.module.css';
+import styles from './registration-form.module.css';
 
-export interface LoginFormProps extends CommonProps {}
+export interface RegistrationFormProps extends CommonProps {}
 
-export const LoginForm: React.FC<LoginFormProps> = (props) => {
+export const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
 	const { className } = props;
 	const { fields, submit } = useForm(form);
 
