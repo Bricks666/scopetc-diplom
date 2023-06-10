@@ -1,6 +1,6 @@
 .wrapper {
 	display: grid;
-	gap: 25px;
+	gap: 1em 2em;
 }
 
 .title {
@@ -9,9 +9,6 @@
 
 .list {
 	display: grid;
-	/*
-  Сделать автоматическое разбиени
-  */
-	grid-template-columns: repeat(4, minmax(240px, 320px));
-	gap: 20px;
+	grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+	gap: 2em;
 }

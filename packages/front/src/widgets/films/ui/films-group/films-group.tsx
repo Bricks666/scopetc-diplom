@@ -2,13 +2,13 @@ import { Typography } from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
 import { TemplateFilmCard } from '@/entities/film';
-import { Film } from '@/shared/api';
+import { SearchedFilm } from '@/shared/api';
 import { CommonProps } from '@/shared/types';
 
 import styles from './films-group.module.css';
 
 export interface FilmsGroupProps extends CommonProps {
-	readonly films: Film[];
+	readonly films: SearchedFilm[];
 	readonly title: string;
 }
 
@@ -22,7 +22,7 @@ export const FilmsGroup: React.FC<FilmsGroupProps> = (props) => {
 			</Typography>
 			<div className={styles.list}>
 				{films.map((film) => (
-					<TemplateFilmCard {...film} key={film.id} />
+					<TemplateFilmCard {...film} key={film.kinopoiskId} />
 				))}
 			</div>
 		</section>

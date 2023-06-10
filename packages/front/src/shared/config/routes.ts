@@ -11,7 +11,6 @@ export const routes = {
 	login: createRoute(),
 	registration: createRoute(),
 	home: createRoute(),
-	film: createRoute<{ id: number }>(),
 };
 
 export const controls = createRouterControls();
@@ -29,10 +28,6 @@ export const router = createHistoryRouter({
 		{
 			path: '/',
 			route: routes.home,
-		},
-		{
-			path: '/film/:id',
-			route: routes.film,
 		}
 	],
 	controls,

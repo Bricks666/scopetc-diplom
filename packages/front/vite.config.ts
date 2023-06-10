@@ -10,6 +10,12 @@ export default defineConfig({
 		port: 3000,
 		cors: true,
 		hmr: true,
+		proxy: {
+			'/api': {
+				changeOrigin: true,
+				target: 'http://localhost:5001/',
+			},
+		},
 	},
 	resolve: {
 		alias: {
@@ -29,6 +35,6 @@ export default defineConfig({
 			browserslistConfigFile: true,
 			extensions: ['.ts', '.tsx'],
 		}),
-		splitVendorChunkPlugin(),
+		splitVendorChunkPlugin()
 	],
 });

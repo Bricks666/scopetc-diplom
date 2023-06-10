@@ -23,7 +23,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
 			position='static'
 			color='transparent'>
 			<Toolbar>
-				<Container className={styles.container}>
+				<Container className={styles.container} maxWidth='xl'>
 					<LogoIcon className={styles.logo} />
 					<Navigation className={styles.navigation} />
 					<IconButton className={styles.accessability}>

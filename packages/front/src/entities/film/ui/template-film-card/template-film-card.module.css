@@ -1,11 +1,10 @@
 .card {
 	display: grid;
-	gap: 15px;
+	gap: 10px;
 }
 
 .image {
 	width: 100%;
-	height: 480px;
 
 	object-fit: cover;
 	object-position: center;
@@ -13,10 +12,12 @@
 	border-radius: 10px;
 
 	transition: transform ease-in-out 250ms;
+
+	aspect-ratio: 9 / 16;
 }
 
 .card:hover .image {
-	transform: translateY(-5%);
+	transform: translateY(-1em);
 }
 
 .title {

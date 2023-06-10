@@ -4,11 +4,12 @@ import { filmsApi } from '@/shared/api';
 
 const promoFilms = createDomain();
 
-const handlerFx = promoFilms.effect(filmsApi.getPromo);
+const handlerFx = promoFilms.effect(filmsApi.getRecommendations);
 
 export const query = createQuery({
 	initialData: [],
 	effect: handlerFx,
+	mapData: ({ result, }) => result.items,
 });
 
 cache(query);

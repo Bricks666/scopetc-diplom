@@ -1,44 +1,46 @@
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StarIcon from '@mui/icons-material/Star';
-import { IconButton, Typography } from '@mui/material';
-import { RouteInstance } from 'atomic-router';
-import { Link } from 'atomic-router-react';
+import { Typography } from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
-import { Film } from '@/shared/api';
-import { routes } from '@/shared/config';
+import { SearchedFilm } from '@/shared/api';
 import { CommonProps } from '@/shared/types';
 
 import styles from './template-film-card.module.css';
+import { concatGenres } from '../../lib';
 
-export interface TemplateFilmCardProps extends CommonProps, Film {}
+export interface TemplateFilmCardProps extends CommonProps, SearchedFilm {}
 
 export const TemplateFilmCard: React.FC<TemplateFilmCardProps> = (props) => {
-	const { id, title, preview: urlPreview, className, } = props;
+	const {
+		nameRu,
+		nameEn,
+		nameOriginal,
+		posterUrlPreview,
+		genres,
+		ratingKinopoisk,
+		className,
+	} = props;
+
+	const title = nameRu || nameEn || nameOriginal || 'Безымянный фильм';
+
+	const genre = concatGenres(genres);
+
 	return (
 		<div className={cn(styles.card, className)}>
-			<Link className={styles.link} to={routes.film} params={{ id, }}>
-				<img className={styles.image} src={urlPreview} alt={title} />
-			</Link>
-			<Typography variant='h5' component='h4'>
-				<Link className={styles.link} to={routes.film} params={{ id, }}>
+			<img className={styles.image} src={posterUrlPreview} alt={title} />
+			<div>
+				<Typography variant='h5' component='h4'>
 					{title}
-				</Link>
-			</Typography>
-			<div className={styles.bottom}>
-				<Typography className={styles.rating} variant='h6' component='p'>
-					<IconButton className={styles.button}>
-						<StarIcon className={styles.icon} />
-					</IconButton>
-					8.1
 				</Typography>
-				<IconButton
-					className={styles.button}
-					to={routes.film as RouteInstance<any>}
-					params={{ id, }}
-					component={Link}>
+				<Typography>{genre}</Typography>
+				<div className={styles.bottom}>
+					<Typography className={styles.rating} variant='h6' component='p'>
+						<StarIcon className={styles.icon} />
+						{ratingKinopoisk}
+					</Typography>
 					<PlayArrowIcon className={styles.icon} />
-				</IconButton>
+				</div>
 			</div>
 		</div>
 	);

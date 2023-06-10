@@ -2,7 +2,7 @@ import ky from 'ky';
 
 let token: string | null = null;
 
-export const instance = ky.create({
+export const myownServerInstalce = ky.create({
 	mode: 'cors',
 	credentials: 'include',
 	prefixUrl: import.meta.env.VITE_API_URL || '/api',
@@ -33,5 +33,14 @@ export const instance = ky.create({
 				token = body.tokens.accessToken;
 			}
 		],
+	},
+});
+
+export const unofficialKinopoiskServerInstance = ky.create({
+	mode: 'cors',
+	prefixUrl: 'https://kinopoiskapiunofficial.tech/api',
+	headers: {
+		// eslint-disable-next-line no-undef
+		'X-API-KEY': API_KEY,
 	},
 });
