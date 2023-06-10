@@ -1,5 +1,5 @@
 import { createDomain, sample } from 'effector';
-import { not, pending, spread } from 'patronum';
+import { debug, not, pending, spread } from 'patronum';
 import { SearchedFilm, filmsApi } from '@/shared/api';
 
 const recommendations = createDomain();
@@ -33,3 +33,5 @@ sample({
 	fn: (data, newData) => [...data, ...newData],
 	target: $data,
 });
+
+debug($data);

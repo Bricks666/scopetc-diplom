@@ -6,11 +6,8 @@ import { FilmsGroup, recommendationsFilmsModel } from '@/widgets/films';
 import { Header } from '@/widgets/page';
 import { Center, MainLayout } from '@/shared/ui';
 import { routes } from '@/shared/config';
-import { pageModel } from './model';
 
 import styles from './page.module.css';
-
-pageModel.loaded();
 
 const Home: React.FC = () => {
 	return (

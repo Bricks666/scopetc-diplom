@@ -7,7 +7,7 @@ import { Navigation, Search } from '@/features/page';
 import { sessionModel } from '@/shared/models';
 import { routes } from '@/shared/config';
 import { CommonProps } from '@/shared/types';
-import { AvatarIcon, EyeIcon, LogoIcon } from '@/shared/ui';
+import { AvatarIcon, LogoIcon } from '@/shared/ui';
 
 import styles from './header.module.css';
 
@@ -26,9 +26,6 @@ export const Header: React.FC<HeaderProps> = (props) => {
 				<Container className={styles.container} maxWidth='xl'>
 					<LogoIcon className={styles.logo} />
 					<Navigation className={styles.navigation} />
-					<IconButton className={styles.accessability}>
-						<EyeIcon />
-					</IconButton>
 					<Search className={styles.search} />
 					{isAuth ? (
 						<IconButton className={styles.account}>

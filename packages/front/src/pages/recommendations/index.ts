@@ -4,7 +4,7 @@ import { pageModel } from './model';
 
 const Page = React.lazy(() => import('./page'));
 
-export const HomePage = {
+export const RecommendationPage = {
 	view: Page,
 	route: pageModel.currentRoute,
 	otherwise: PageLoader as React.ComponentType<any>,
