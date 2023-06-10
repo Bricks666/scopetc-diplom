@@ -4,7 +4,8 @@ import { currentRoute, loadedWithRouteState } from './page';
 
 sample({
 	clock: [loadedWithRouteState, currentRoute.opened],
-	target: recommendationsFilmsModel.start,
+	fn: () => ({ page: 1, }),
+	target: recommendationsFilmsModel.infinityScroll.start,
 });
 
 sample({

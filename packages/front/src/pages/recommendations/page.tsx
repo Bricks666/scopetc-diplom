@@ -4,9 +4,9 @@ import * as React from 'react';
 import { FilmsGroup, recommendationsFilmsModel } from '@/widgets/films';
 import { Header } from '@/widgets/page';
 import { Center, MainLayout } from '@/shared/ui';
+import { useIntersection } from '@/shared/lib';
 
 import styles from './page.module.css';
-import { useIntersection } from '@/shared/lib';
 
 const Recommendations: React.FC = () => {
 	return (
@@ -19,12 +19,12 @@ const Recommendations: React.FC = () => {
 };
 
 const Films: React.FC = () => {
-	const films = useUnit(recommendationsFilmsModel.$data);
-	return <FilmsGroup title='' films={films} />;
+	const films = useUnit(recommendationsFilmsModel.infinityScroll.$data);
+	return <FilmsGroup films={films} />;
 };
 
 const FilmsLoading: React.FC = () => {
-	const loading = useUnit(recommendationsFilmsModel.$pending);
+	const loading = useUnit(recommendationsFilmsModel.infinityScroll.$pending);
 	if (loading) {
 		return (
 			<Center>
@@ -38,7 +38,8 @@ const FilmsLoading: React.FC = () => {
 const IntersectionDetector: React.FC = () => {
 	const ref = React.useRef<HTMLDivElement | null>(null);
 
-	const fetch = useUnit(recommendationsFilmsModel.start);
+	const fetch = useUnit(recommendationsFilmsModel.infinityScroll.next);
+	const isInitial = useUnit(recommendationsFilmsModel.infinityScroll.$initial);
 
 	const intersectionEntry = useIntersection({
 		containerRef: ref,
@@ -46,10 +47,10 @@ const IntersectionDetector: React.FC = () => {
 	});
 
 	React.useEffect(() => {
-		if (intersectionEntry?.isIntersecting) {
+		if (intersectionEntry?.isIntersecting && !isInitial) {
 			fetch();
 		}
-	}, [intersectionEntry?.isIntersecting]);
+	}, [intersectionEntry?.isIntersecting, isInitial]);
 
 	return <div ref={ref} />;
 };

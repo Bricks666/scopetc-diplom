@@ -92,6 +92,10 @@ export interface SearchedFilm
 		| 'posterUrlPreview'
 	> {}
 
+export interface SearchFilmQuery {
+	readonly page: number;
+}
+
 export interface GetOneParams {
 	readonly id: number;
 }
