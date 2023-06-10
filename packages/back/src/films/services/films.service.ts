@@ -1,21 +1,14 @@
 import { Injectable } from '@nestjs/common';
 import { request } from '@/shared/lib';
-import { SearchDto } from '../dto';
-import { GetOneParams } from './types';
+import { SearchDto, SearchedFilmDto } from '../dto';
 
 @Injectable()
 export class FilmsService {
-	async getAll(query: SearchDto) {
+	async getRecommendations(query: SearchDto) {
 		const queryParams = new URLSearchParams(query as Record<string, string>);
-		console.log(queryParams.toString());
-		return request(`v2.2/films?${queryParams.toString()}`, {});
-	}
-
-	getRandom() {
-		return request('v2.2/films');
-	}
-
-	getOne(params: GetOneParams) {
-		return request(`v2.2/films/${params.id}`);
+		return request<SearchedFilmDto[]>(
+			`v2.2/films?${queryParams.toString()}`,
+			{}
+		);
 	}
 }
