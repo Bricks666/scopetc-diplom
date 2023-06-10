@@ -4,5 +4,10 @@ import { currentRoute, loadedWithRouteState } from './page';
 
 sample({
 	clock: [loadedWithRouteState, currentRoute.opened],
-	target: recommendationsFilmsModel.query.start,
+	target: recommendationsFilmsModel.start,
+});
+
+sample({
+	clock: currentRoute.closed,
+	target: recommendationsFilmsModel.$data.reinit!,
 });

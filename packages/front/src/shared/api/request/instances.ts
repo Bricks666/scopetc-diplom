@@ -1,11 +1,13 @@
 import ky from 'ky';
+import { API_KEY, KINOPOISK_API_URL, MYOWN_API_URL } from '@/shared/config';
 
 let token: string | null = null;
 
+console.log(MYOWN_API_URL);
 export const myownServerInstalce = ky.create({
 	mode: 'cors',
 	credentials: 'include',
-	prefixUrl: import.meta.env.VITE_API_URL || '/api',
+	prefixUrl: MYOWN_API_URL,
 	hooks: {
 		beforeRequest: [
 			(request) => {
@@ -36,11 +38,10 @@ export const myownServerInstalce = ky.create({
 	},
 });
 
-export const unofficialKinopoiskServerInstance = ky.create({
+export const kinopoiskServerInstance = ky.create({
 	mode: 'cors',
-	prefixUrl: 'https://kinopoiskapiunofficial.tech/api',
+	prefixUrl: KINOPOISK_API_URL,
 	headers: {
-		// eslint-disable-next-line no-undef
 		'X-API-KEY': API_KEY,
 	},
 });

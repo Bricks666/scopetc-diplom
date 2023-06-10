@@ -1,10 +1,14 @@
-import { ItemsResponse, myownServerInstalce } from '../request';
+import {
+	ItemsResponse,
+	myownServerInstalce,
+	kinopoiskServerInstance
+} from '../request';
 import { Film, GetOneParams, SearchedFilm } from './types';
 
 const baseURL = 'films';
 
 export const getAll = async (): Promise<ItemsResponse<SearchedFilm>> => {
-	return myownServerInstalce.get(baseURL).json();
+	return kinopoiskServerInstance.get(`v2.2/${baseURL}`).json();
 };
 
 export const getRecommendations = async (): Promise<
@@ -14,5 +18,5 @@ export const getRecommendations = async (): Promise<
 };
 
 export const getOne = async (params: GetOneParams): Promise<Film> => {
-	return myownServerInstalce.get(`${baseURL}/${params.id}`).json();
+	return kinopoiskServerInstance.get(`v2.2/${baseURL}/${params.id}`).json();
 };

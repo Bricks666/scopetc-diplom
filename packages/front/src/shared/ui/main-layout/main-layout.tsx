@@ -1,5 +1,6 @@
 import { Container } from '@mui/material';
 import * as React from 'react';
+import cn from 'classnames';
 import { CommonProps } from '@/shared/types';
 
 import styles from './main-layout.module.css';
@@ -14,7 +15,10 @@ export const MainLayout: React.FC<MainLayoutProps> = (props) => {
 	return (
 		<div className={styles.container}>
 			{header}
-			<Container className={className} maxWidth='xl'>
+			<Container
+				className={cn(styles.main, className)}
+				maxWidth='xl'
+				component='main'>
 				{children}
 			</Container>
 		</div>

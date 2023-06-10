@@ -11,6 +11,7 @@ export const routes = {
 	login: createRoute(),
 	registration: createRoute(),
 	home: createRoute(),
+	recommendations: createRoute(),
 };
 
 export const controls = createRouterControls();
@@ -28,6 +29,10 @@ export const router = createHistoryRouter({
 		{
 			path: '/',
 			route: routes.home,
+		},
+		{
+			path: '/recommendations',
+			route: routes.recommendations,
 		}
 	],
 	controls,

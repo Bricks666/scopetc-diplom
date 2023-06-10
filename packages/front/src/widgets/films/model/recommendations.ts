@@ -1,15 +1,35 @@
-import { cache, createQuery } from '@farfetched/core';
-import { createDomain } from 'effector';
-import { filmsApi } from '@/shared/api';
+import { createDomain, sample } from 'effector';
+import { not, pending, spread } from 'patronum';
+import { SearchedFilm, filmsApi } from '@/shared/api';
 
-const promoFilms = createDomain();
+const recommendations = createDomain();
 
-const handlerFx = promoFilms.effect(filmsApi.getRecommendations);
+export const $data = recommendations.store<SearchedFilm[]>([]);
+export const $totalPages = recommendations.store<number>(0);
 
-export const query = createQuery({
-	initialData: [],
-	effect: handlerFx,
-	mapData: ({ result, }) => result.items,
+export const start = recommendations.event();
+const requestFx = recommendations.effect(filmsApi.getRecommendations);
+export const $pending = pending({ effects: [requestFx], of: 'some', });
+const updateData = recommendations.event<SearchedFilm[]>();
+
+sample({
+	clock: start,
+	filter: not($pending),
+	target: requestFx,
 });
 
-cache(query);
+spread({
+	source: requestFx.doneData,
+	targets: {
+		items: updateData,
+		totalPages: $totalPages,
+	},
+});
+
+sample({
+	clock: updateData,
+	source: $data,
+	filter: (_, newData) => !!newData.length,
+	fn: (data, newData) => [...data, ...newData],
+	target: $data,
+});

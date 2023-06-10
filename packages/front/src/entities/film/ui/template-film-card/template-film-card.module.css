@@ -1,6 +1,7 @@
 .card {
 	display: grid;
-	gap: 10px;
+	gap: 1em;
+	grid-template-rows: max-content 1fr;
 }
 
 .image {
@@ -20,6 +21,11 @@
 	transform: translateY(-1em);
 }
 
+.info {
+	display: grid;
+	grid-template-rows: max-content max-content 1fr;
+}
+
 .title {
 	font-weight: 500;
 }
@@ -31,25 +37,12 @@
 	font-weight: 700;
 }
 
-.link {
-	display: block;
-
-	color: inherit;
-	text-decoration: none;
-}
-
 .bottom {
+	align-self: end;
+
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-}
-
-.button {
-	color: var(--secondary-color-90);
-}
-
-.button:hover {
-	color: var(--secondary-color-100);
 }
 
 .icon {

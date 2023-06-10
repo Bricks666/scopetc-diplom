@@ -29,7 +29,7 @@ export const TemplateFilmCard: React.FC<TemplateFilmCardProps> = (props) => {
 	return (
 		<div className={cn(styles.card, className)}>
 			<img className={styles.image} src={posterUrlPreview} alt={title} />
-			<div>
+			<div className={styles.info}>
 				<Typography variant='h5' component='h4'>
 					{title}
 				</Typography>
@@ -37,6 +37,7 @@ export const TemplateFilmCard: React.FC<TemplateFilmCardProps> = (props) => {
 				<div className={styles.bottom}>
 					<Typography className={styles.rating} variant='h6' component='p'>
 						<StarIcon className={styles.icon} />
+
 						{ratingKinopoisk}
 					</Typography>
 					<PlayArrowIcon className={styles.icon} />
