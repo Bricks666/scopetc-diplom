@@ -19,14 +19,14 @@ import { FiltersModule } from './filters';
 		AuthModule,
 		UsersModule,
 		FilmsModule,
-		FiltersModule,
+		FiltersModule
 	],
 	controllers: [],
 	providers: [
 		{
 			provide: APP_GUARD,
 			useClass: AuthGuard,
-		},
+		}
 	],
 })
 export class AppModule {}

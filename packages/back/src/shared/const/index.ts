@@ -1,2 +1,2 @@
 export * from './cookie';
-export * from './api'
+export * from './api';

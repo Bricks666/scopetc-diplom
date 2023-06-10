@@ -19,7 +19,7 @@ export const createPageLoadModel = <T extends RouteParams>(
 
 	sample({
 		clock: loaded,
-		source: { params: route.$params, query: route.$query },
+		source: { params: route.$params, query: route.$query, },
 		target: loadedWithRouteState,
 	});
 

@@ -9,7 +9,7 @@
 		"preview": "vite preview",
 		"lint": "eslint --ext .tsx,.ts src",
 		"lint:fix": "eslint --ext .tsx,.ts src --fix",
-		"prettier": "prettier --write --config ./.prettierrc src",
+		"prettier": "prettier --write --config ../../.prettierrc src",
 		"gen:css-types": "tcm src"
 	},
 	"dependencies": {

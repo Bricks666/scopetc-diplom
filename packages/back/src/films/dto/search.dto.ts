@@ -18,33 +18,33 @@ export const SEARCH_ORDER = {
 export type SearchOrder = ExtractValueType<typeof SEARCH_ORDER>;
 
 export class SearchDto {
-	@ApiProperty({ required: false })
+	@ApiProperty({ required: false, })
 	declare countries?: number[];
 
-	@ApiProperty({ required: false })
+	@ApiProperty({ required: false, })
 	declare genres?: number[];
 
-	@ApiProperty({ required: false, default: 'RATING', enum: SEARCH_ORDER })
+	@ApiProperty({ required: false, default: 'RATING', enum: SEARCH_ORDER, })
 	declare order?: SearchOrder;
 
-	@ApiProperty({ required: false, default: 'ALL', enum: SEARCH_FILM_TYPE })
+	@ApiProperty({ required: false, default: 'ALL', enum: SEARCH_FILM_TYPE, })
 	declare type?: SearchFilmType;
 
-	@ApiProperty({ required: false, default: 0 })
+	@ApiProperty({ required: false, default: 0, })
 	declare ratingFrom?: number;
 
-	@ApiProperty({ required: false, default: 10 })
+	@ApiProperty({ required: false, default: 10, })
 	declare ratingTo?: number;
 
-	@ApiProperty({ required: false, default: 1000 })
+	@ApiProperty({ required: false, default: 1000, })
 	declare yearFrom?: number;
 
-	@ApiProperty({ required: false, default: 3000 })
+	@ApiProperty({ required: false, default: 3000, })
 	declare yearTo?: number;
 
-	@ApiProperty({ required: false })
+	@ApiProperty({ required: false, })
 	declare keyword?: string;
 
-	@ApiProperty({ required: false, default: 1 })
+	@ApiProperty({ required: false, default: 1, })
 	declare page?: number;
 }

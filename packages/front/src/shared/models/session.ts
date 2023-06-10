@@ -6,7 +6,7 @@ import {
 	createDomain,
 	createEffect,
 	createEvent,
-	sample,
+	sample
 } from 'effector';
 import { authApi } from '../api';
 
@@ -50,7 +50,7 @@ sample({
 
 sample({
 	clock: auth.finished.success,
-	fn: ({ result }) => result.user,
+	fn: ({ result, }) => result.user,
 	target: $user,
 });
 
@@ -62,7 +62,7 @@ export interface ChainAuthOptions<Params extends RouteParams> {
 export const chainAuthorized = <Params extends RouteParams>(
 	options: ChainAuthOptions<Params>
 ) => {
-	const { route, otherwise } = options;
+	const { route, otherwise, } = options;
 
 	const sessionCheckStarted = createEvent<any>();
 	const alreadyAuthorized = createEvent();
@@ -123,7 +123,7 @@ export const chainAuthorized = <Params extends RouteParams>(
 export const chainAnonymous = <Params extends RouteParams>(
 	options: ChainAuthOptions<Params>
 ) => {
-	const { route, otherwise } = options;
+	const { route, otherwise, } = options;
 
 	const sessionCheckStarted = createEvent<any>();
 	const alreadyAuthorized = createEvent();

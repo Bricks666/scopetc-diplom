@@ -8,11 +8,11 @@ export const auth = (): Promise<AuthResponse> => {
 };
 
 export const login = (params: LoginParams): Promise<AuthResponse> => {
-	return instance.post(`${baseURL}/login`, { json: params }).json();
+	return instance.post(`${baseURL}/login`, { json: params, }).json();
 };
 
 export const registration = (
 	params: RegistrationParams
 ): Promise<AuthResponse> => {
-	return instance.post(`${baseURL}/registration`, { json: params }).json();
+	return instance.post(`${baseURL}/registration`, { json: params, }).json();
 };

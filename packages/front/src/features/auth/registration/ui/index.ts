@@ -1,4 +1,4 @@
 export {
 	RegistrationForm,
-	type RegistrationFormProps,
+	type RegistrationFormProps
 } from './registration-form';

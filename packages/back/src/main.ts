@@ -9,7 +9,7 @@ import { AppModule } from '@/app.module';
 import { DatabaseService } from '@/database';
 
 async function bootstrap() {
-	const { PORT } = process.env;
+	const { PORT, } = process.env;
 	const app = await NestFactory.create<NestExpressApplication>(AppModule);
 
 	const prismaService = app.get(DatabaseService);

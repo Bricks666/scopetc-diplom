@@ -12,10 +12,10 @@ import styles from './registration-form.module.css';
 export interface RegistrationFormProps extends CommonProps {}
 
 export const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
-	const { className } = props;
-	const { fields, submit } = useForm(form);
+	const { className, } = props;
+	const { fields, submit, } = useForm(form);
 
-	const { login, password } = fields;
+	const { login, password, } = fields;
 
 	const onSubmit = useSubmit(submit);
 
@@ -29,7 +29,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
 				helperText={login.errorText()}
 				isValid={login.isValid}
 				name={login.name}
-				InputProps={{ disableUnderline: true }}
+				InputProps={{ disableUnderline: true, }}
 				variant='outlined'
 				placeholder='Логин'
 			/>
@@ -42,7 +42,7 @@ export const RegistrationForm: React.FC<RegistrationFormProps> = (props) => {
 				isValid={password.isValid}
 				name={password.name}
 				variant='outlined'
-				InputProps={{ disableUnderline: true }}
+				InputProps={{ disableUnderline: true, }}
 				placeholder='Пароль'
 				type='password'
 			/>

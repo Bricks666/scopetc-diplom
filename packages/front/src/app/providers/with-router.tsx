@@ -10,10 +10,10 @@ redirect({
 
 export const withRouter =
 	(Component: React.ComponentType): React.ComponentType =>
-	() => {
-		return (
-			<RouterProvider router={router}>
-				<Component />
-			</RouterProvider>
-		);
-	};
+		() => {
+			return (
+				<RouterProvider router={router}>
+					<Component />
+				</RouterProvider>
+			);
+		};

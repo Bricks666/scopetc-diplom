@@ -1,7 +1,7 @@
 import {
 	createHistoryRouter,
 	createRoute,
-	createRouterControls,
+	createRouterControls
 } from 'atomic-router';
 import { sample } from 'effector';
 import { createBrowserHistory } from 'history';
@@ -33,7 +33,7 @@ export const router = createHistoryRouter({
 		{
 			path: '/film/:id',
 			route: routes.film,
-		},
+		}
 	],
 	controls,
 });
