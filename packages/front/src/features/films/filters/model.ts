@@ -5,6 +5,9 @@ interface SearchFilmForm extends Required<Omit<SearchFilmQuery, 'page'>> {}
 
 export const form = createForm<SearchFilmForm>({
 	fields: {
+		keyword: {
+			init: '',
+		},
 		countries: {
 			init: [],
 		},

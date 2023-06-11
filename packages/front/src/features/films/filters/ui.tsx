@@ -11,11 +11,11 @@ import {
 } from '@mui/material';
 import { CommonProps } from '@/shared/types';
 import { form } from './model';
+import { CountriesPicker, GenresPicker } from '@/entities/film';
 import { Field } from '@/shared/ui';
 import { SEARCH_FILM_TYPE, SEARCH_ORDER } from '@/shared/api';
 
 import styles from './styles.module.css';
-import { CountriesPicker, GenresPicker } from '@/entities/film';
 
 export interface SearchFilmFiltersProps extends CommonProps {}
 
@@ -26,6 +26,7 @@ export const SearchFilmFilters: React.FC<SearchFilmFiltersProps> = (props) => {
 
 	return (
 		<form className={cn(styles.form, className)}>
+			<Keyword />
 			<Countries />
 			<Genres />
 			<Order />
@@ -36,6 +37,23 @@ export const SearchFilmFilters: React.FC<SearchFilmFiltersProps> = (props) => {
 				Сбросить
 			</Button>
 		</form>
+	);
+};
+
+const Keyword: React.FC = () => {
+	const keyword = useUnit(form.fields.keyword);
+
+	return (
+		<Field
+			value={keyword.value}
+			onChange={keyword.onChange}
+			onBlur={keyword.onBlur}
+			helperText={keyword.errorText}
+			isValid={keyword.isValid}
+			name='keyword'
+			variant='outlined'
+			label='Ключевое слово'
+		/>
 	);
 };
 

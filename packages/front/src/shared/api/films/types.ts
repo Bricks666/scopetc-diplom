@@ -117,6 +117,7 @@ export type SearchOrder = ExtractValueType<typeof SEARCH_ORDER>;
 
 export interface SearchFilmQuery {
 	readonly page: number;
+	readonly keyword?: string;
 	readonly countries?: number[];
 	readonly genres?: number[];
 	readonly order?: SearchOrder;
