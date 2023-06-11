@@ -1,11 +1,12 @@
 import ky from 'ky';
+import { API_KEY, KINOPOISK_API_URL, MYOWN_API_URL } from '@/shared/config';
 
 let token: string | null = null;
 
-export const instance = ky.create({
+export const myownServerInstalce = ky.create({
 	mode: 'cors',
 	credentials: 'include',
-	prefixUrl: import.meta.env.VITE_API_URL || '/api',
+	prefixUrl: MYOWN_API_URL,
 	hooks: {
 		beforeRequest: [
 			(request) => {
@@ -33,5 +34,13 @@ export const instance = ky.create({
 				token = body.tokens.accessToken;
 			}
 		],
+	},
+});
+
+export const kinopoiskServerInstance = ky.create({
+	mode: 'cors',
+	prefixUrl: KINOPOISK_API_URL,
+	headers: {
+		'X-API-KEY': API_KEY,
 	},
 });

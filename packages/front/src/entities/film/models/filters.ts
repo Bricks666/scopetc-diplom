@@ -2,13 +2,13 @@ import { cache, createQuery } from '@farfetched/core';
 import { createDomain } from 'effector';
 import { filmsApi } from '@/shared/api';
 
-const promoFilms = createDomain();
+const filters = createDomain();
 
-const handlerFx = promoFilms.effect(filmsApi.getPromo);
+const handlerFx = filters.effect(filmsApi.getFilters);
 
 export const query = createQuery({
-	initialData: [],
+	initialData: { genres: [], countries: [], },
 	effect: handlerFx,
 });
 
-cache(query);
+cache(query, { staleAfter: '30min', });

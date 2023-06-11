@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { routes } from '@/shared/config';
 import { PageLoader } from '@/shared/ui';
+import { pageModel } from './model';
 
 const Page = React.lazy(() => import('./page'));
 
 export const HomePage = {
 	view: Page,
-	route: routes.home,
+	route: pageModel.currentRoute,
 	otherwise: PageLoader as React.ComponentType<any>,
 };

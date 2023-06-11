@@ -1,1 +1,1 @@
-export * as promoFilmsModel from './promo';
+export * as recommendationsFilmsModel from './recommendations';

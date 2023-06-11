@@ -10,14 +10,8 @@ export class FilmsController {
 	constructor(private readonly filmsService: FilmsService) {}
 
 	@DisableAuthCheck()
-	@Get('/')
-	getAll(@Query() search: SearchDto) {
-		return this.filmsService.getAll(search);
-	}
-
-	@DisableAuthCheck()
 	@Get('/recommendations')
 	getRandom(@Query() search: SearchDto) {
-		return this.filmsService.getAll(search);
+		return this.filmsService.getRecommendations(search);
 	}
 }
