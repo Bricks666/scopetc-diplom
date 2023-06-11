@@ -14,7 +14,9 @@ export const getAll = async (): Promise<ItemsResponse<SearchedFilm>> => {
 export const getRecommendations = async (
 	params: SearchFilmQuery
 ): Promise<ItemsResponse<SearchedFilm>> => {
-	const query = new URLSearchParams(params as Record<string, string>);
+	const query = new URLSearchParams(
+		params as unknown as Record<string, string>
+	);
 	return myownServerInstalce
 		.get(`${baseURL}/recommendations`, { searchParams: query, })
 		.json();

@@ -1,7 +1,7 @@
 export type VoidFunction = () => void;
 export type ExtractValueType<O extends Record<string, any>> = O extends Record<
-	string,
-	infer V
+	infer V,
+	any
 >
 	? V
 	: never;

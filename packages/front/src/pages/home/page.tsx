@@ -26,7 +26,7 @@ const Home: React.FC = () => {
 };
 
 const Films: React.FC = () => {
-	const films = useUnit(recommendationsFilmsModel.$data);
+	const films = useUnit(recommendationsFilmsModel.infinityScroll.$data);
 	return <FilmsGroup title='Вам может понравиться' films={films} />;
 };
 

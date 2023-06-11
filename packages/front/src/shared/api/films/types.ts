@@ -10,11 +10,11 @@ export const PRODUCTION_STATUS = {
 } as const;
 
 export const FILM_TYPE = {
-	FILM: 'FILM',
-	VIDEO: 'VIDEO',
-	TV_SERIES: 'TV_SERIES',
-	MINI_SERIES: 'MINI_SERIES',
-	TV_SHOW: 'TV_SHOW',
+	FILM: 'Фильмы',
+	VIDEO: 'Видео',
+	TV_SERIES: 'Сериалы',
+	MINI_SERIES: 'Мини сериалы',
+	TV_SHOW: 'ТВ-шоу',
 } as const;
 
 export type ProductionStatus = ExtractValueType<typeof PRODUCTION_STATUS>;
@@ -92,8 +92,33 @@ export interface SearchedFilm
 		| 'posterUrlPreview'
 	> {}
 
+export const SEARCH_ORDER = {
+	RATING: 'Рейтинг',
+	NUM_VOTE: 'Число голосов',
+	YEAR: 'Год',
+} as const;
+
+export const SEARCH_FILM_TYPE = {
+	FILM: 'Фильмы',
+	TV_SERIES: 'Сериалы',
+	MINI_SERIES: 'Мини сериалы',
+	TV_SHOW: 'ТВ-шоу',
+	ALL: 'Все',
+} as const;
+
+export type SearchFilmType = ExtractValueType<typeof SEARCH_FILM_TYPE>;
+export type SearchOrder = ExtractValueType<typeof SEARCH_ORDER>;
+
 export interface SearchFilmQuery {
 	readonly page: number;
+	readonly countries?: number[];
+	readonly genres?: number[];
+	readonly order?: SearchOrder;
+	readonly type?: SearchFilmType;
+	readonly ratingFrom?: number;
+	readonly ratingTo?: number;
+	readonly yearFrom?: number;
+	readonly yearTo?: number;
 }
 
 export interface GetOneParams {
