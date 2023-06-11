@@ -3,7 +3,6 @@ import { API_KEY, KINOPOISK_API_URL, MYOWN_API_URL } from '@/shared/config';
 
 let token: string | null = null;
 
-console.log(MYOWN_API_URL);
 export const myownServerInstalce = ky.create({
 	mode: 'cors',
 	credentials: 'include',

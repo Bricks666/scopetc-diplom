@@ -3,7 +3,13 @@ import {
 	myownServerInstalce,
 	kinopoiskServerInstance
 } from '../request';
-import { Film, GetOneParams, SearchFilmQuery, SearchedFilm } from './types';
+import {
+	Film,
+	Filters,
+	GetOneParams,
+	SearchFilmQuery,
+	SearchedFilm
+} from './types';
 
 const baseURL = 'films';
 
@@ -24,4 +30,8 @@ export const getRecommendations = async (
 
 export const getOne = async (params: GetOneParams): Promise<Film> => {
 	return kinopoiskServerInstance.get(`v2.2/${baseURL}/${params.id}`).json();
+};
+
+export const getFilters = async (): Promise<Filters> => {
+	return kinopoiskServerInstance.get(`v2.2/films/filters`).json();
 };

@@ -74,7 +74,7 @@ export const createInfinityScroll = <
 	sample({
 		clock: start,
 		filter: not($pending),
-		target: [$data.reinit!, requestFx],
+		target: [$data.reinit!, $nextParams.reinit, requestFx],
 	});
 
 	sample({

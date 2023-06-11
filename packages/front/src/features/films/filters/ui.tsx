@@ -2,6 +2,7 @@ import { useUnit } from 'effector-react';
 import * as React from 'react';
 import cn from 'classnames';
 import {
+	Button,
 	FormControl,
 	FormHelperText,
 	FormLabel,
@@ -14,19 +15,65 @@ import { Field } from '@/shared/ui';
 import { SEARCH_FILM_TYPE, SEARCH_ORDER } from '@/shared/api';
 
 import styles from './styles.module.css';
+import { CountriesPicker, GenresPicker } from '@/entities/film';
 
 export interface SearchFilmFiltersProps extends CommonProps {}
 
 export const SearchFilmFilters: React.FC<SearchFilmFiltersProps> = (props) => {
 	const { className, } = props;
 
+	const reset = useUnit(form.reset);
+
 	return (
 		<form className={cn(styles.form, className)}>
+			<Countries />
+			<Genres />
 			<Order />
 			<Type />
 			<Rating />
 			<Years />
+			<Button onClick={reset} type='reset'>
+				Сбросить
+			</Button>
 		</form>
+	);
+};
+
+const Countries: React.FC = () => {
+	const countries = useUnit(form.fields.countries);
+
+	return (
+		<CountriesPicker
+			value={countries.value}
+			onChange={countries.onChange}
+			onBlur={countries.onBlur}
+			helperText={countries.errorText}
+			isValid={countries.isValid}
+			name='countries'
+			variant='outlined'
+			label='Страны'
+			limitTags={1}
+			multiple
+		/>
+	);
+};
+
+const Genres: React.FC = () => {
+	const genres = useUnit(form.fields.genres);
+
+	return (
+		<GenresPicker
+			value={genres.value}
+			onChange={genres.onChange}
+			onBlur={genres.onBlur}
+			helperText={genres.errorText}
+			isValid={genres.isValid}
+			name='genres'
+			variant='outlined'
+			label='Жанры'
+			limitTags={1}
+			multiple
+		/>
 	);
 };
 
@@ -44,7 +91,7 @@ const Order: React.FC = () => {
 			name='order'
 			InputProps={{ disableUnderline: true, }}
 			variant='outlined'
-			placeholder='Порядок сортировки'
+			label='Порядок сортировки'
 			select>
 			{options.map(([value, label]) => (
 				<MenuItem value={value} key={value}>
@@ -66,10 +113,10 @@ const Type: React.FC = () => {
 			onBlur={type.onBlur}
 			helperText={type.errorText}
 			isValid={type.isValid}
-			name='order'
+			name='type'
 			InputProps={{ disableUnderline: true, }}
 			variant='outlined'
-			placeholder='Тип'
+			label='Тип'
 			select>
 			{options.map(([value, label]) => (
 				<MenuItem value={value} key={value}>

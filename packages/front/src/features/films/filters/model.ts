@@ -1,5 +1,4 @@
 import { createForm } from 'effector-forms';
-import { debug } from 'patronum';
 import { SearchFilmQuery } from '@/shared/api';
 
 interface SearchFilmForm extends Required<Omit<SearchFilmQuery, 'page'>> {}
@@ -33,5 +32,3 @@ export const form = createForm<SearchFilmForm>({
 	},
 	validateOn: ['change'],
 });
-
-debug(form.$values, form.formValidated);

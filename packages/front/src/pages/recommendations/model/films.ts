@@ -1,14 +1,20 @@
 import { sample } from 'effector';
 import { debounce } from 'patronum';
 import { recommendationsFilmsModel } from '@/widgets/films';
-import { currentRoute, loadedWithRouteState } from './page';
+import { currentRoute } from './page';
 import { searchFilmFiltersModel } from '@/features/films';
+import { filmFiltersModel } from '@/entities/film';
 
 sample({
-	clock: [loadedWithRouteState, currentRoute.opened],
+	clock: currentRoute.opened,
 	source: searchFilmFiltersModel.form.$values,
 	fn: (params) => ({ page: 1, ...params, }),
 	target: recommendationsFilmsModel.infinityScroll.start,
+});
+
+sample({
+	clock: currentRoute.opened,
+	target: filmFiltersModel.query.start,
 });
 
 sample({

@@ -20,12 +20,18 @@ export const FILM_TYPE = {
 export type ProductionStatus = ExtractValueType<typeof PRODUCTION_STATUS>;
 export type FilmType = ExtractValueType<typeof FILM_TYPE>;
 
-export interface FilmCountry {
+export interface Country {
+	readonly id: number;
 	readonly country: string;
 }
-export interface FilmGenre {
+
+export interface Genre {
+	readonly id: number;
 	readonly genre: string;
 }
+
+export interface FilmCountry extends Pick<Country, 'country'> {}
+export interface FilmGenre extends Pick<Genre, 'genre'> {}
 
 export interface Film {
 	readonly kinopoiskId: number;
@@ -119,6 +125,11 @@ export interface SearchFilmQuery {
 	readonly ratingTo?: number;
 	readonly yearFrom?: number;
 	readonly yearTo?: number;
+}
+
+export interface Filters {
+	readonly genres: Genre[];
+	readonly countries: Country[];
 }
 
 export interface GetOneParams {
