@@ -7,7 +7,7 @@ import styles from './page-loader.module.css';
 export const PageLoader: React.FC = () => {
 	return (
 		<Center className={styles.wrapper}>
-			<CircularProgress size={80} />
+			<CircularProgress color='warning' size={80} />
 		</Center>
 	);
 };

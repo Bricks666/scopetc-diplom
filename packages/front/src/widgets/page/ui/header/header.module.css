@@ -3,25 +3,23 @@
 }
 
 .container {
-	display: flex;
+	display: grid;
+	grid-template-columns: max-content max-content 1fr max-content;
 	align-items: center;
-
-	justify-content: space-between;
+	gap: 2em;
 }
 
 .logo {
 	width: 138px;
-	height: auto;
+	aspect-ratio: 16 / 9;
 }
 
-.navigation {
-	gap: 20px;
+.login {
+	font-weight: 500;
 }
 
-.accessability {
-	color: #ffffff;
-}
+.search {
+	justify-self: end;
 
-.account {
-	color: #ffffff;
+	width: clamp(250px, 100%, 400px);
 }

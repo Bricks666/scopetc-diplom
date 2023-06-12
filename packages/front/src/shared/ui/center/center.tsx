@@ -4,10 +4,22 @@ import { CommonProps } from '@/shared/types';
 
 import styles from './center.module.css';
 
-export const Center: React.FC<React.PropsWithChildren<CommonProps>> = (
+export interface CenterProps extends CommonProps {
+	readonly fullHeight?: boolean;
+}
+
+export const Center: React.FC<React.PropsWithChildren<CenterProps>> = (
 	props
 ) => {
-	const { children, className, } = props;
+	const { children, className, fullHeight, } = props;
 
-	return <div className={cn(styles.container, className)}>{children}</div>;
+	const classes = cn(
+		styles.container,
+		{
+			[styles.fullHeight]: fullHeight,
+		},
+		className
+	);
+
+	return <div className={classes}>{children}</div>;
 };

@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography, Link as MUILink } from '@mui/material';
 import { Link } from 'atomic-router-react';
 import { useUnit } from 'effector-react';
 import * as React from 'react';
@@ -14,12 +14,18 @@ const Home: React.FC = () => {
 		<MainLayout className={styles.main} header={<Header />}>
 			<Films />
 			<Center className={styles.center}>
-				<Typography variant='h5' fontWeight={500} component='p'>
+				<Typography className={styles.text} variant='h5' component='p'>
 					Не нашли интересного?
 				</Typography>
-				<Typography variant='h5' to={routes.recommendations} component={Link}>
+				<MUILink
+					className={styles.link}
+					variant='h6'
+					color='inherit'
+					underline='always'
+					to={routes.recommendations}
+					component={Link}>
 					Подберите рекомендации более точно
-				</Typography>
+				</MUILink>
 			</Center>
 		</MainLayout>
 	);
@@ -27,7 +33,22 @@ const Home: React.FC = () => {
 
 const Films: React.FC = () => {
 	const films = useUnit(recommendationsFilmsModel.infinityScroll.$data);
-	return <FilmsGroup title='Вам может понравиться' films={films} />;
+
+	return (
+		<FilmsGroup
+			title='Вам может понравиться'
+			films={films}
+			extraHeader={
+				<MUILink
+					className={styles.header__link}
+					to={routes.recommendations}
+					variant='body1'
+					component={Link}>
+					Смотреть все
+				</MUILink>
+			}
+		/>
+	);
 };
 
 export default Home;

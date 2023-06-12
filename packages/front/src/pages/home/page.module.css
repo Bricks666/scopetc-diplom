@@ -3,5 +3,18 @@
 }
 
 .center {
-  flex-direction: column;
+	flex-direction: column;
+}
+
+.header__link {
+	font-weight: 500;
+	color: inherit;
+}
+
+.text {
+	font-weight: 500;
+}
+
+.link {
+	font-weight: 500;
 }

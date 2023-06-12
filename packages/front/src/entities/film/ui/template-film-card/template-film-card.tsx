@@ -1,13 +1,20 @@
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StarIcon from '@mui/icons-material/Star';
-import { Typography } from '@mui/material';
+import {
+	Card,
+	CardContent,
+	CardHeader,
+	CardMedia,
+	IconButton,
+	Typography
+} from '@mui/material';
 import cn from 'classnames';
 import * as React from 'react';
 import { SearchedFilm } from '@/shared/api';
 import { CommonProps } from '@/shared/types';
+import { concatGenres } from '../../lib';
 
 import styles from './template-film-card.module.css';
-import { concatGenres } from '../../lib';
 
 export interface TemplateFilmCardProps extends CommonProps, SearchedFilm {}
 
@@ -27,22 +34,44 @@ export const TemplateFilmCard: React.FC<TemplateFilmCardProps> = (props) => {
 	const genre = concatGenres(genres);
 
 	return (
-		<div className={cn(styles.card, className)}>
-			<img className={styles.image} src={posterUrlPreview} alt={title} />
-			<div className={styles.info}>
-				<Typography variant='h5' component='h4'>
-					{title}
+		<Card className={cn(styles.card, className)} variant='outlined'>
+			<CardMedia
+				className={styles.image}
+				src={posterUrlPreview}
+				alt={title}
+				component='img'
+			/>
+			<CardHeader
+				className={styles.header}
+				title={title}
+				classes={{
+					content: styles.header__content,
+				}}
+				titleTypographyProps={{
+					className: styles.title,
+					variant: 'subtitle1',
+					component: 'p',
+					title,
+				}}
+				subheader={genre}
+				subheaderTypographyProps={{
+					className: styles.subtitle,
+					variant: 'subtitle2',
+					component: 'p',
+					title: genre,
+				}}
+			/>
+			<CardContent className={styles.content}>
+				<Typography className={styles.rating} variant='body1' component='p'>
+					<IconButton>
+						<StarIcon />
+					</IconButton>
+					{ratingKinopoisk}
 				</Typography>
-				<Typography>{genre}</Typography>
-				<div className={styles.bottom}>
-					<Typography className={styles.rating} variant='h6' component='p'>
-						<StarIcon className={styles.icon} />
-
-						{ratingKinopoisk}
-					</Typography>
-					<PlayArrowIcon className={styles.icon} />
-				</div>
-			</div>
-		</div>
+				<IconButton>
+					<PlayArrowIcon />
+				</IconButton>
+			</CardContent>
+		</Card>
 	);
 };

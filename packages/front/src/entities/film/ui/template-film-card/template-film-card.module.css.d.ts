@@ -1,10 +1,11 @@
 declare const styles: {
 	readonly card: string;
 	readonly image: string;
-	readonly info: string;
+	readonly header: string;
+	readonly header__content: string;
 	readonly title: string;
+	readonly subtitle: string;
+	readonly content: string;
 	readonly rating: string;
-	readonly bottom: string;
-	readonly icon: string;
 };
 export = styles;

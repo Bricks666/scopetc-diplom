@@ -2,7 +2,6 @@ import { useUnit } from 'effector-react';
 import * as React from 'react';
 import cn from 'classnames';
 import {
-	Button,
 	FormControl,
 	FormHelperText,
 	FormLabel,
@@ -22,8 +21,6 @@ export interface SearchFilmFiltersProps extends CommonProps {}
 export const SearchFilmFilters: React.FC<SearchFilmFiltersProps> = (props) => {
 	const { className, } = props;
 
-	const reset = useUnit(form.reset);
-
 	return (
 		<form className={cn(styles.form, className)}>
 			<Keyword />
@@ -33,9 +30,6 @@ export const SearchFilmFilters: React.FC<SearchFilmFiltersProps> = (props) => {
 			<Type />
 			<Rating />
 			<Years />
-			<Button onClick={reset} type='reset'>
-				Сбросить
-			</Button>
 		</form>
 	);
 };
@@ -45,13 +39,14 @@ const Keyword: React.FC = () => {
 
 	return (
 		<Field
+			className={styles.keyword}
 			value={keyword.value}
 			onChange={keyword.onChange}
 			onBlur={keyword.onBlur}
 			helperText={keyword.errorText}
 			isValid={keyword.isValid}
 			name='keyword'
-			variant='outlined'
+			variant='standard'
 			label='Ключевое слово'
 		/>
 	);
@@ -69,7 +64,7 @@ const Countries: React.FC = () => {
 			isValid={countries.isValid}
 			name='countries'
 			variant='outlined'
-			label='Страны'
+			label='Страна'
 			limitTags={1}
 			multiple
 		/>
@@ -88,7 +83,7 @@ const Genres: React.FC = () => {
 			isValid={genres.isValid}
 			name='genres'
 			variant='outlined'
-			label='Жанры'
+			label='Жанр'
 			limitTags={1}
 			multiple
 		/>

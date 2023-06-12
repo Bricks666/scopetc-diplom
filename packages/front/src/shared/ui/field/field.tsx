@@ -23,7 +23,7 @@ export const Field: React.FC<FieldProps> = React.memo((props) => {
 		<TextField
 			{...(rest as TextFieldProps)}
 			onChange={handleChange}
-			error={!isValid}
+			error={isValid === false}
 		/>
 	);
 });

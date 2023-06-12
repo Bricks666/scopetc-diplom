@@ -2,6 +2,7 @@
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
+	gap: 1em;
 }
 
 .list {
@@ -19,26 +20,11 @@
 }
 
 .link {
-	padding-bottom: 10px;
-
-	font-size: 24px;
-	color: currentColor;
-	text-transform: capitalize;
-	text-decoration: none;
-	font-weight: 400;
-
-	border-bottom: 1px solid transparent;
-	border-radius: 0;
-
-	transition: color ease-in-out 250ms;
-}
-
-.link:hover {
-	color: var(--secondary-color-100);
+	color: inherit;
+	font-size: 1.1rem;
 }
 
 .active {
-	color: var(--secondary-color-100);
-
-	border-color: var(--secondary-color-100);
+	color: var(--mui-palette-warning-main);
+	font-weight: 500;
 }

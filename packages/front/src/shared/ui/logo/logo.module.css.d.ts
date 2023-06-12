@@ -1,4 +1,4 @@
 declare const styles: {
-	readonly form: string;
+	readonly logo: string;
 };
 export = styles;
