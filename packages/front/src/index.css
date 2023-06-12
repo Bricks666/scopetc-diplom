@@ -1,9 +1,4 @@
 :root {
-	--primary-color-100: #001424;
-	--primary-color-90: #1d334a;
-	--secondary-color-100: #ba9d5a;
-	--secondary-color-90: #6c5622;
-
 	font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 	line-height: 1.5;
 	font-weight: 400;
@@ -18,10 +13,6 @@
 
 	margin: 0;
 	padding: 0;
-
-	color: white;
-
-	background-color: var(--primary-color-100);
 }
 
 *,

@@ -1,4 +1,4 @@
-import { Typography } from '@mui/material';
+import { Typography, Link as MUILink } from '@mui/material';
 import { Link } from 'atomic-router-react';
 import cn from 'classnames';
 import * as React from 'react';
@@ -35,23 +35,21 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
 					if (item.route) {
 						return (
 							<li className={styles.item} key={item.label}>
-								<Typography
+								<MUILink
 									className={styles.link}
 									activeClassName={styles.active}
 									to={item.route}
-									variant='h5'
+									variant='body1'
 									component={Link}>
 									{item.label}
-								</Typography>
+								</MUILink>
 							</li>
 						);
 					}
 
 					return (
 						<li className={styles.item} key={item.label}>
-							<Typography className={styles.link} variant='button'>
-								{item.label}
-							</Typography>
+							<Typography className={styles.link}>{item.label}</Typography>
 						</li>
 					);
 				})}

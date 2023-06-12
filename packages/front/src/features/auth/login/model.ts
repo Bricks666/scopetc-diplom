@@ -1,8 +1,8 @@
 import { createMutation } from '@farfetched/core';
 import { createDomain, sample } from 'effector';
 import { createForm } from 'effector-forms';
-import { authUserModel } from '@/entities/auth-user';
 import { authApi, LoginParams } from '@/shared/api';
+import { sessionModel } from '@/shared/models';
 
 const login = createDomain();
 
@@ -36,8 +36,7 @@ sample({
 
 sample({
 	clock: mutation.finished.success,
-	fn: ({ result }) => result.user,
-	target: authUserModel.$user,
+	target: sessionModel.auth.start,
 });
 
 sample({

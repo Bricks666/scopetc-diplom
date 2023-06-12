@@ -1,8 +1,14 @@
 import { sample } from 'effector';
-import { promoFilmsModel } from '@/widgets/films';
+import { recommendationsFilmsModel } from '@/widgets/films';
 import { currentRoute, loadedWithRouteState } from './page';
 
 sample({
 	clock: [loadedWithRouteState, currentRoute.opened],
-	target: promoFilmsModel.query.start,
+	fn: () => ({ page: 1, }),
+	target: recommendationsFilmsModel.infinityScroll.start,
+});
+
+sample({
+	clock: currentRoute.closed,
+	target: recommendationsFilmsModel.infinityScroll.$data.reinit!,
 });

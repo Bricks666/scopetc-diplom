@@ -11,9 +11,9 @@ export default defineConfig({
 		cors: true,
 		hmr: true,
 		proxy: {
-			'/static': {
-				target: 'http://localhost:5000',
+			'/api': {
 				changeOrigin: true,
+				target: 'http://localhost:5001/',
 			},
 		},
 	},
@@ -35,6 +35,6 @@ export default defineConfig({
 			browserslistConfigFile: true,
 			extensions: ['.ts', '.tsx'],
 		}),
-		splitVendorChunkPlugin(),
+		splitVendorChunkPlugin()
 	],
 });

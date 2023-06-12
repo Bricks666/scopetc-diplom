@@ -1,30 +1,23 @@
-.layout {
-	display: flex;
-	justify-content: center;
-}
-
 .wrapper {
 	display: grid;
-	gap: 50px;
+	gap: 2.5em;
 
-	max-width: 580px;
+	width: min(calc(100% - 2em), 440px);
 
-	padding: 64px 100px;
-
-	background-color: var(--primary-color-90);
+	padding: 2em;
 }
 
 .top {
 	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-around;
 	align-items: center;
-	gap: 20px;
+	gap: 1em;
 }
 
 .logo {
-	width: 180px;
+	width: 100px;
 	height: auto;
-
-	color: white;
 }
 
 .title {
@@ -32,15 +25,10 @@
 }
 
 .bottom {
-	display: grid;
-	justify-items: center;
-	gap: 7px;
+	text-align: center;
+	font-weight: 500;
 }
 
 .link {
-	transition: color ease-in-out 250ms;
-}
-
-.link:hover {
-	color: var(--secondary-color-100);
+	font-weight: 400;
 }
