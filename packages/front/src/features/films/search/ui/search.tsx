@@ -1,10 +1,8 @@
+import SearchIcon from '@mui/icons-material/Search';
 import { InputAdornment } from '@mui/material';
-import cn from 'classnames';
 import * as React from 'react';
 import { CommonProps } from '@/shared/types';
-import { Field, SearchIcon } from '@/shared/ui';
-
-import styles from './search.module.css';
+import { Field } from '@/shared/ui';
 
 export interface SearchProps extends CommonProps {}
 
@@ -13,16 +11,16 @@ export const Search: React.FC<SearchProps> = (props) => {
 
 	return (
 		<Field
-			className={cn(styles.field, className)}
+			className={className}
 			InputProps={{
 				startAdornment: (
-					<InputAdornment className={styles.icon} position='start'>
+					<InputAdornment position='start'>
 						<SearchIcon />
 					</InputAdornment>
 				),
 			}}
 			size='small'
-			placeholder='Поиск'
+			placeholder='Фильмы, сериалы, шоу'
 		/>
 	);
 };

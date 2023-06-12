@@ -20,9 +20,6 @@ const theme = extendTheme({
 	},
 	typography: {
 		fontFamily: 'MTS, sans-serif',
-		// allVariants: {
-		// 	color: '#ffffff',
-		// },
 	},
 	components: {
 		MuiCssBaseline: {
