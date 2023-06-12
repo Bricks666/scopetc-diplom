@@ -63,7 +63,9 @@ export const TemplateFilmCard: React.FC<TemplateFilmCardProps> = (props) => {
 			/>
 			<CardContent className={styles.content}>
 				<Typography className={styles.rating} variant='body1' component='p'>
-					<StarIcon />
+					<IconButton>
+						<StarIcon />
+					</IconButton>
 					{ratingKinopoisk}
 				</Typography>
 				<IconButton>

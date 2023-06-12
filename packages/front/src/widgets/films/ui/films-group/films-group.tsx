@@ -10,15 +10,28 @@ import styles from './films-group.module.css';
 export interface FilmsGroupProps extends CommonProps {
 	readonly films: SearchedFilm[];
 	readonly title?: string;
+	readonly extraHeader?: React.ReactElement | null;
 }
 
 export const FilmsGroup: React.FC<FilmsGroupProps> = (props) => {
-	const { films, title, className, } = props;
+	const { films, title, extraHeader, className, } = props;
 
-	const header = title ? (
-		<Typography className={styles.title} variant='h4' component='h3'>
+	const hasTitle = !!title;
+	const hasExtraHeader = !!extraHeader;
+
+	const hasHeader = hasTitle || hasExtraHeader;
+
+	const titleElement = hasTitle ? (
+		<Typography className={styles.title} variant='h5' component='h3'>
 			{title}
 		</Typography>
+	) : null;
+
+	const header = hasHeader ? (
+		<div className={styles.header}>
+			{titleElement}
+			{extraHeader}
+		</div>
 	) : null;
 
 	return (

@@ -21,10 +21,10 @@
 
 .link {
 	color: inherit;
-  font-size: 1.1rem;
+	font-size: 1.1rem;
 }
 
 .active {
-	color: var(--mui-palette-primary-main);
-  font-weight: 500;
+	color: var(--mui-palette-warning-main);
+	font-weight: 500;
 }

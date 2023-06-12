@@ -30,7 +30,7 @@ const FilmsLoading: React.FC = () => {
 	if (loading) {
 		return (
 			<Center>
-				<CircularProgress color='secondary' size={50} />
+				<CircularProgress color='warning' size={50} />
 			</Center>
 		);
 	}

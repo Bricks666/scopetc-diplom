@@ -39,7 +39,6 @@ export const Navigation: React.FC<NavigationProps> = (props) => {
 									className={styles.link}
 									activeClassName={styles.active}
 									to={item.route}
-									underline='hover'
 									variant='body1'
 									component={Link}>
 									{item.label}

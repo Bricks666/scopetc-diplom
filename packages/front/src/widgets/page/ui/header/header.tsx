@@ -45,9 +45,9 @@ export const Header: React.FC<HeaderProps> = (props) => {
 						</Tooltip>
 					) : (
 						<MUILink
+							className={styles.login}
 							to={routes.login}
 							color='inherit'
-							underline='hover'
 							component={Link}>
 							Войти
 						</MUILink>
