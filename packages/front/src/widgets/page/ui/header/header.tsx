@@ -15,7 +15,7 @@ import { Navigation } from '@/features/page';
 import { sessionModel } from '@/shared/models';
 import { routes } from '@/shared/config';
 import { CommonProps } from '@/shared/types';
-import { LogoIcon } from '@/shared/ui';
+import { Logo } from '@/shared/ui';
 
 import styles from './header.module.css';
 import { Search } from '@/features/films';
@@ -34,7 +34,7 @@ export const Header: React.FC<HeaderProps> = (props) => {
 			color='default'>
 			<Toolbar>
 				<Container className={styles.container} maxWidth='xl'>
-					<LogoIcon className={styles.logo} />
+					<Logo className={styles.logo} />
 					<Navigation />
 					<Search className={styles.search} />
 					{isAuth ? (

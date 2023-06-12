@@ -1,5 +1,5 @@
 export * from './main-layout';
-export * from './icons';
+export * from './logo';
 export * from './field';
 export * from './checkbox';
 export * from './slider';
