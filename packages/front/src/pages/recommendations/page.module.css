@@ -3,5 +3,23 @@
 }
 
 .center {
-  flex-direction: column;
+	flex-direction: column;
+}
+
+.header {
+	display: grid;
+	gap: 1em;
+	grid-template-columns: 1fr max-content;
+}
+
+.title {
+	font-weight: 700;
+}
+
+.filters {
+	grid-column: 1 / -1;
+}
+
+.filters__controls {
+	display: flex;
 }
